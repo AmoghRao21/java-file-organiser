@@ -4,8 +4,8 @@
 A Java implementation of the Bash script `[ -d "output" ] || { mkdir output && mv *.class output/ && echo "Done"; }`.
 
 ## How to Run
-1. Compile: `javac FileOrganizer.java`
-2. Execute: `java FileOrganizer`
+1. Compile: `javac logic1.java`
+2. Execute: `java logic1`
 
 ## Bash vs. Java
 | Bash Command          | Java Equivalent               |
