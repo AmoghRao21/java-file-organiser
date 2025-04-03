@@ -13,3 +13,5 @@ A Java implementation of the Bash script `[ -d "output" ] || { mkdir output && m
 | `[ -d "output" ]`     | `Files.exists(outputDir)`     |
 | `mkdir -p output`     | `Files.createDirectories()`   |
 | `mv *.class output/`  | `Files.move()` + `DirectoryStream` |
+
+# Included Interavtive CLI tool.
