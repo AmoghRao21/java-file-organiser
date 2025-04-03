@@ -1,25 +1,26 @@
 import java.nio.file.*;
+import java.util.Scanner;
 import java.io.IOException;
-import java.util.stream.*;
-import java.nio.file.DirectoryStream;
+
 public class logic1 {
     public static void main(String[] args) throws IOException {
-        Path outputPath = Paths.get("output");
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Enter target directory: ");
+       Path dir = Paths.get(sc.nextLine());
 
-        if (!Files.exists(outputPath)) {
-            try {
-                Files.createDirectories(outputPath);
-            } catch (IOException e) {
-                System.err.println("Error creating output directory: " + e.getMessage());
-            }
+       if (!Files.exists(dir)) {
+           Files.createDirectories(dir);
+           System.out.println("Directory created: " + dir);
+       }
 
-        try (DirectoryStream<Path> classFiles = Files.newDirectoryStream(Paths.get("."), ".class")) {
-             
-            for (Path file : classFiles) {
-                Files.move(file, outputPath.resolve(file.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+       System.out.println("Enter the file extension : ");
+         String ext = sc.nextLine();
+
+        try (DirectoryStream<Path> files = Files.newDirectoryStream(Paths.get("."), ext)) {
+            for (Path file : files) {
+               Files.move(file, dir.resolve(file.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Moved file: " + file.getFileName() + " to " + dir);
             }
-            System.out.println("Done");
-        }
         }
     }
 }
